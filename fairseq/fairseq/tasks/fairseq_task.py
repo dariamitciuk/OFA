@@ -10,7 +10,8 @@ from argparse import Namespace
 from typing import Any, Callable, Dict, List
 
 import torch
-from fairseq import metrics, search, tokenizer, utils
+from fairseq import search, tokenizer, utils
+from fairseq.logging import metrics
 from fairseq.data import Dictionary, FairseqDataset, data_utils, encoders, iterators
 from fairseq.dataclass import FairseqDataclass
 from fairseq.dataclass.utils import gen_parser_from_dataclass
@@ -530,7 +531,7 @@ class FairseqTask(object):
         """[deprecated] Aggregate logging outputs from data parallel training."""
         utils.deprecation_warning(
             "The aggregate_logging_outputs API is deprecated. "
-            "Please use the reduce_metrics API instead."
+            "Please use the reduce_API instead."
         )
         with metrics.aggregate() as agg:
             self.reduce_metrics(logging_outputs, criterion)
